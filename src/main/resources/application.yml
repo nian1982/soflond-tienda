@@ -1,0 +1,28 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: reto
+
+  r2dbc:
+    url: r2dbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5435}/${DB_NAME:muhoco}?schema=softlond
+    username: ${DB_USER:nian}
+    password: ${DB_PASS:8203}
+    pool:
+      initial-size: 2
+      max-size: ${DB_POOL_SIZE:10}
+      max-idle-time: 30m
+      validation-query: SELECT 1
+  init:
+    schema-locations: classpath:schema.sql
+    mode: always
+
+logging:
+  level:
+    org.springframework.r2dbc: DEBUG
+    org.springframework.data.r2dbc: DEBUG
+    io.r2dbc.postgresql.QUERY: DEBUG
+    io.r2dbc.postgresql.PARAM: DEBUG
+  pattern:
+    console: "%d{HH:mm:ss.SSS} %highlight(%-5level) [%thread] %cyan(%logger{36}) - %msg%n"
