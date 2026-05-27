@@ -17,6 +17,7 @@ public class ProductoMapper {
                 .stock(request.stock())
                 .price(request.price())
                 .tiendaId(request.tiendaId())
+                .active(true)
                 .build();
     }
 

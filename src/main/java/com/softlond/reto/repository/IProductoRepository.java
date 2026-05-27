@@ -10,10 +10,10 @@ import reactor.core.publisher.Mono;
 
 public interface IProductoRepository extends ReactiveCrudRepository<Producto, Long> {
 
-    @Query("SELECT * FROM softlond.productos WHERE tienda_id = $1")
+    @Query("SELECT * FROM softlond.productos WHERE tienda_id = $1 AND active = true")
     Flux<Producto> findByTiendaId(Long tiendaId);
 
-    @Query("SELECT * FROM softlond.productos where name = $1")
+    @Query("SELECT * FROM softlond.productos where name = $1 AND active = true")
     Mono<Producto> findByName(String name);
 
     @Query("SELECT * FROM softlond.productos WHERE active = $1")

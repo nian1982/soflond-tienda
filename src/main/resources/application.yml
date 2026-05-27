@@ -14,9 +14,10 @@ spring:
       max-size: ${DB_POOL_SIZE:10}
       max-idle-time: 30m
       validation-query: SELECT 1
-  init:
-    schema-locations: classpath:schema.sql
-    mode: always
+  sql:
+    init:
+      schema-locations: classpath:schema.sql
+      mode: always
 
 logging:
   level:
